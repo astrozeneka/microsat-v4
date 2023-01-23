@@ -1,5 +1,6 @@
 
 GENOME_LIST=["FNA", "GGA", "LAG", "VUR"]
+reference_software="ssw"
 
 import os
 from glob import glob
@@ -78,11 +79,11 @@ if __name__ == '__main__':
             res["kmer"] = parse_kmer(f"../data/kmer/kmer-output/{genome}/{chromosome}.tsv")
             res["misa"] = parse_misa(f"../data/misa/misa-output/{genome}/{chromosome}.tsv")
 
-            quotient = len(res["ssw"])
+            quotient = len(res[reference_software])
             for software in software_list:
                 reported_in_range = 0
                 for item in res[software]:
-                    if item in res["ssw"]:
+                    if item in res[reference_software]:
                         reported_in_range+=1
                 final_accuracy_value[software][genome][chromosome] = reported_in_range/quotient
 
