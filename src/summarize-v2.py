@@ -86,7 +86,8 @@ if __name__ == '__main__':
                 for item in res[software]:
                     if item in res[reference_software]:
                         reported_in_range+=1
-                final_accuracy_value[software][genome][chromosome] = reported_in_range/quotient
+                if quotient != 0:
+                    final_accuracy_value[software][genome][chromosome] = reported_in_range/quotient
 
 
     print("Done")
