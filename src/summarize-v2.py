@@ -1,6 +1,6 @@
 
 GENOME_LIST=["FNA", "GGA", "LAG", "VUR"]
-reference_software="ssw"
+reference_software="misa"
 
 import os
 from glob import glob
@@ -13,7 +13,8 @@ def parse_ssw(file_path):
         data = f.read().split("\n")
         data = [a.split("\t") for a in data]
     for l in data:
-        output.append((l[0], int(l[3])))
+        if(len(data) >= 4):
+            output.append((l[0], int(l[3])))
     return output
 
 def parse_perf(file_path):
